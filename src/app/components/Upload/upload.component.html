@@ -1,0 +1,50 @@
+<ion-row *ngIf="config.progressBar">
+  <ion-col class="center" size="12">
+    <ion-title>{{ dictionary.filesLabel }}</ion-title>
+  </ion-col>
+
+  <ion-col size="12">
+    <ion-progress-bar type="indeterminate" color="primary"></ion-progress-bar>
+  </ion-col>
+</ion-row>
+
+<ion-row *ngIf="!config.progressBar">
+  <ion-col class="center" size="12">
+    <ion-title>{{ dictionary.filesLabel }}</ion-title>
+  </ion-col>
+
+  <ion-col *ngIf="config.dropFiles" size="12">
+    <div ng2FileDrop [ngClass]="{ 'drop-file-over': hasBaseDropZoneOver }" (fileOver)="fileOverBase($event)" [uploader]="fileUploader" class="area">
+      <div id="dropZone">{{ dictionary.dropFilesLabel }}</div>
+    </div>
+  </ion-col>
+
+  <ion-col *ngIf="config.selectFiles" size="12">
+    <ion-item>
+      <input type="file" accept="*" ng2FileSelect [uploader]="fileUploader" multiple/>
+    </ion-item>
+  </ion-col>
+
+
+  <ion-col *ngIf="config.listFilesUploaded.length > 0" size="12">
+    <ion-col class="center" size="12">
+      <ion-title>{{ dictionary.filesUploadedLabel }}</ion-title>
+    </ion-col>
+    <ion-list>
+      <ion-item *ngFor="let item of config.listFilesUploaded" class="font-size20">
+        <ion-icon id="viewFile" slot="start" color="success" name="camera-outline" (click)="openView(item.src)"></ion-icon>
+        <ion-label>{{ item.filename }}</ion-label>
+        <ion-icon id="removeFile" slot="end" color="danger" name="close-outline" (click)="removeFile(item)"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-col>
+
+  <ion-col *ngIf="config.listFiles" size="12">
+    <ion-list>
+      <ion-item *ngFor="let item of fileUploader.queue" class="font-size20">
+        <ion-label>{{ item?.file?.name }}</ion-label>
+        <ion-icon id="removeFile" slot="end" color="danger" name="close-outline" (click)="removeLocalFile(item)"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-col>
+</ion-row>

@@ -1,0 +1,37 @@
+<ion-content id="login">
+
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <ion-card>
+        <ion-row>
+
+          <ion-col id="img-login" size="12">
+            <ion-img src="../../../assets/icons//icon.png"></ion-img>
+          </ion-col>
+
+          <ion-col id="input-username" size="12">
+            <ion-item>
+              <ion-icon name="person" slot="start"></ion-icon>
+              <ion-input #inputUsername label="Usuário" labelPlacement="floating" type="text" formControlName="username" name="username" (keypress)="eventEnter($event.keyCode)"></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col id="input-password" size="12">
+            <ion-item>
+                <ion-icon name="lock-closed" slot="start"></ion-icon>
+                <ion-input #inputPassword labelPlacement="floating" label="Senha" [type]="visiblePass? 'password' : 'text'" formControlName="password" name="password" (keypress)="eventEnter($event.keyCode)"></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col id="btn-login" size="12">
+            <ion-button [disabled]="form.invalid" type="submit">
+              <b>{{ dictionary.btnAccess }}</b>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+
+      </ion-row>
+    </ion-card>
+  </form>
+
+  <p-toast position="top-right"></p-toast>
+</ion-content>

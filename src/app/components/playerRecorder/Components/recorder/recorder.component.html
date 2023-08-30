@@ -1,0 +1,6 @@
+<ion-item>
+  <ion-label *ngIf="config.boolCountRecorder" (click)="config.boolPressAndHold?  null:isRecorder? stop(): start()" color="primary">{{ recorderDuration }}/{{ limitRecorderDuration }}</ion-label>
+  <ion-button #btnRecorder style="font-size: 16px; height: 35px;">
+    <ion-icon slot="icon-only" [name]="config.boolPressAndHold? 'mic' : isRecorder? 'stop' : 'play'"></ion-icon>
+  </ion-button>
+</ion-item>

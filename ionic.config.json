@@ -1,0 +1,7 @@
+{
+  "name": "Ionic Model",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

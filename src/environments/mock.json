@@ -1,0 +1,83 @@
+{
+  "uuid": "936d4910-49df-422a-932e-c07c0da227ee",
+  "lastMigration": 28,
+  "name": "Ionic Model",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 9000,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "19461fee-0e63-4e80-a0e3-d137d16bc71f",
+      "type": "http",
+      "documentation": "?username=admin&pwd=admin",
+      "method": "get",
+      "endpoint": "login",
+      "responses": [
+        {
+          "uuid": "c991ebd8-efa1-41a6-b916-299f85b727d1",
+          "body": "{\r\n  \"authenticated\": true,\r\n  \"username\": \"BNovaisK\",\r\n  \"name\": \"Bruno\",\r\n  \"country\": \"BR\",\r\n  \"language\": \"PT\",\r\n  \"profile\": \"ADMIN\",\r\n  \"dictionary\": [],\r\n  \"menu\": [\r\n    {\r\n      \"caption\": \"Home\",\r\n      \"type\": \"home\",\r\n      \"icon\": \"icon_request.svg\",\r\n      \"tabIndex\": 0,\r\n      \"subMenu\": []\r\n    }\r\n  ],\r\n  \"message\": \"\"\r\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "19461fee-0e63-4e80-a0e3-d137d16bc71f"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

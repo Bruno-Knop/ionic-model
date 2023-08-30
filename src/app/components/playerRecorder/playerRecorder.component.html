@@ -1,0 +1,9 @@
+<app-recorder [config]="configPlayer"></app-recorder>
+
+<ion-list>
+  <ion-list-header>
+    <ion-title>LISTA DE AUDIO</ion-title>
+  </ion-list-header>
+
+  <app-player *ngFor="let audio of this.configPlayer.listPlayer; let i=index" [config]="configPlayer" [index]="i" [audio]="audio"></app-player>
+</ion-list>

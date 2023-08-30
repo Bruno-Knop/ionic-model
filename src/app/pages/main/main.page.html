@@ -1,0 +1,58 @@
+<ion-split-pane [ngClass]="isOpenMenu? 'open' : ''" when="xs" contentId="main">
+  <ion-menu (mouseenter)="openMenu(true)" (mouseleave)="openMenu(false)" contentId="main">
+    <ion-header>
+        <ion-item lines="none">
+          <ion-thumbnail slot="start">
+            <img  src="../../../assets//icons/favicon.png" />
+          </ion-thumbnail>
+          <ion-label>{{ dictionary.headerMenu}}</ion-label>
+        </ion-item>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <div *ngFor="let menu of menus; let i=index">
+          <ion-item *ngIf="menu.subMenu.length === 0" lines="none" [routerLink]="['/main/' + menu.type]" routerLinkActive="selected" (mouseenter)="dropList(false)" button>
+            <ion-icon [src]="'../../../assets/icons/' + menu.icon" slot="start"></ion-icon>
+            <ion-label>{{ menu.caption }}</ion-label>
+          </ion-item>
+          <ion-item *ngIf="menu.subMenu.length > 0" lines="none" button detail="true" detail-icon="chevron-forward-outline" (mouseenter)="dropList(true, i, menu.subMenu)">
+            <ion-icon [src]="'../../../assets/icons/' + menu.icon" slot="start"></ion-icon>
+            <ion-label>{{ menu.caption }}</ion-label>
+          </ion-item>
+        </div>
+      </ion-list>
+    </ion-content>
+    <ion-footer>
+      <ion-item>
+        <ion-label>{{ dictionary.btnLogout }}</ion-label>
+        <ion-buttons slot="end" >
+          <ion-button (click)="logout()">
+            <ion-icon slot="icon-only" name="log-out-outline" color="dark"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-footer>
+  </ion-menu>
+
+  <div class="ion-page" id="main">
+    <div id="subMenu" [ngClass]="isOpenSubMenu? 'open' : ''" (click)="dropList(false); openMenu(false)">
+      <ion-card (mouseleave)="dropList(false); openMenu(false)">
+        <ion-list>
+          <div *ngFor="let menu of subMenu">
+            <ion-item lines="inset" [routerLink]="['/main/' + menu.type]" routerLinkActive="selected" button>
+              <ion-icon [src]="'../../../assets/icons/' + menu.icon" slot="start"></ion-icon>
+              <ion-label>{{ menu.caption }}</ion-label>
+            </ion-item>
+          </div>
+        </ion-list>
+      </ion-card>
+    </div>
+    <ion-router-outlet id="main"></ion-router-outlet>
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+</ion-split-pane>

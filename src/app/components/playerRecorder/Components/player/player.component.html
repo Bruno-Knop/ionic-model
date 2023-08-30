@@ -1,0 +1,7 @@
+<ion-item>
+  <ion-button slot="start" [id]="'setAudio-'+index" (click)="playerAudio()">
+    <ion-icon slot="icon-only" [name]="isPlaying? 'pause' : 'play'"></ion-icon>
+  </ion-button>
+  <ion-range #range [(ngModel)]="progressAudioPlayer" max="100" color="primary" (touchend)="seek()" (mouseup)="seek()"></ion-range>
+  <ion-label slot="end">{{ playerDuration }}/{{ audioDuration }}</ion-label>
+</ion-item>
